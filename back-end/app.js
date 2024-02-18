@@ -4,8 +4,8 @@ const sequelize = require('./db/index');
 const userRoutes = require('./routes/users');
 const protectedRoutes = require('./routes/protectedRoute'); // Import the protected routes
 const searchRoutes = require('./routes/searchRoutes');;
-const professionController = require('./controllers/professionController');
-
+const professionController = require('./services/professionService');
+const searchController = require('./controllers/searchController')
 const Quality = require('./db/models/Quality');
 const Expert = require('./db/models/Expert');
 const Rating = require('./db/models/Ratings');
@@ -26,9 +26,7 @@ app.use('/search', searchRoutes);
 // Маршруты для профессий
 app.post('/professions', professionController.createProfession);
 app.put('/professions/:id', professionController.updateProfession);
-app.delete('/professions/:id', professionController.deleteProfession);
-app.get('/professions', professionController.searchProfessions);
-app.get('/professions/qualities', professionController.searchProfessionsByQuality);
+app.put('/del_professions/:id', professionController.deleteProfession);
 
 const PORT = process.env.PORT || 3000;
 

@@ -1,22 +1,20 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../index');
 
-const User = sequelize.define('User', {
+const Profession = sequelize.define('Profession', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true,
     },
-    username: {
+    name: {
         type: Sequelize.STRING,
-        unique: true,
         allowNull: false,
     },
-    password: Sequelize.STRING,
-    isExpert: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-    },
+    salary: {
+        type: Sequelize.FLOAT,
+        allowNull: true, // или false, в зависимости от вашего требования
+    }
 });
 
-module.exports = User;
+module.exports = Profession;

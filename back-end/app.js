@@ -3,11 +3,12 @@ require('dotenv').config(); // Make sure to call this early to load environment 
 const sequelize = require('./db/index');
 const userRoutes = require('./routes/users');
 const protectedRoutes = require('./routes/protectedRoute'); // Import the protected routes
+const searchRoutes = require('./routes/searchRoutes');;
+const professionController = require('./controllers/professionController');
 
 const Quality = require('./db/models/Quality');
 const Expert = require('./db/models/Expert');
 const Rating = require('./db/models/Ratings');
-
 const ratingRoutes = require('./routes/ratingRoutes');
 
 const app = express();
@@ -15,7 +16,19 @@ const app = express();
 app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api', protectedRoutes); // Use the protected routes
+
+// Маршруты для рейтингов
 app.use('/ratings', ratingRoutes);
+
+// Маршруты для поиска
+app.use('/search', searchRoutes);
+
+// Маршруты для профессий
+app.post('/professions', professionController.createProfession);
+app.put('/professions/:id', professionController.updateProfession);
+app.delete('/professions/:id', professionController.deleteProfession);
+app.get('/professions', professionController.searchProfessions);
+app.get('/professions/qualities', professionController.searchProfessionsByQuality);
 
 const PORT = process.env.PORT || 3000;
 

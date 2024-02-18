@@ -9,14 +9,18 @@ exports.calculateTotalRating = (req, res) => {
         group: ['qualityId']
     })
         .then(avgRatings => {
+            if (!avgRatings || avgRatings.length === 0 || !avgRatings[0].avgRating) {
+                return res.status(404).json({ error: 'Данные оценок не найдены' });
+            }
             const totalRating = avgRatings.reduce((total, avgRating) => total + avgRating.avgRating, 0);
             res.json({ totalRating });
         })
         .catch(error => {
-            console.error('Error:', error);
-            res.status(500).json({ error: 'An error occurred while calculating the total rating' });
+            console.error('Error fetching total rating:', error);
+            res.status(500).json({ error: 'Произошла ошибка при получении общего рейтинга' });
         });
 };
+
 
 exports.getAgreedExperts = (req, res) => {
     const qualityId = req.params.qualityId;
@@ -27,11 +31,14 @@ exports.getAgreedExperts = (req, res) => {
         raw: true
     })
         .then(agreedExperts => {
+            if (!agreedExperts) {
+                return res.json({ message: 'Согласованные эксперты не найдены' });
+            }
             res.json({ agreedExperts });
         })
         .catch(error => {
-            console.error('Error:', error);
-            res.status(500).json({ error: 'An error occurred while fetching agreed experts' });
+            console.error('Error fetching agreed experts:', error);
+            res.status(500).json({ error: 'Произошла ошибка при получении согласованных экспертов' });
         });
 };
 

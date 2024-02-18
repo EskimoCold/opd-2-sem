@@ -5,7 +5,6 @@ const userRoutes = require('./routes/users');
 const protectedRoutes = require('./routes/protectedRoute'); // Import the protected routes
 
 const Quality = require('./db/models/Quality');
-const Expert = require('./db/models/Expert');
 const Rating = require('./db/models/Ratings');
 
 const ratingRoutes = require('./routes/ratingRoutes');

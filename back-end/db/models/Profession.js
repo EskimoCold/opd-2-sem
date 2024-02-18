@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../index');
 
-const Expert = sequelize.define('Expert', {
+const Profession = sequelize.define('Profession', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -13,4 +13,4 @@ const Expert = sequelize.define('Expert', {
     },
 });
 
-module.exports = Expert;
+module.exports = Profession;

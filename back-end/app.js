@@ -7,7 +7,6 @@ const searchRoutes = require('./routes/searchRoutes');;
 const professionController = require('./services/professionService');
 const searchController = require('./controllers/searchController')
 const Quality = require('./db/models/Quality');
-const Expert = require('./db/models/Expert');
 const Rating = require('./db/models/Ratings');
 const ratingRoutes = require('./routes/ratingRoutes');
 
@@ -35,7 +34,7 @@ const start = async () => {
         await sequelize.sync();
 
         await Quality.create({ name: 'Some Quality' });
-        await Expert.create({ name: 'Some Expert' });
+        //await Expert.create({ name: 'Some Expert' });
         await Rating.create({ qualityId: 1, expertId: 1, points: 5 });
 
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

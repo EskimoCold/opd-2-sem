@@ -11,10 +11,13 @@ const Profession = sequelize.define('Profession', {
         type: Sequelize.STRING,
         allowNull: false,
     },
+<<<<<<< Updated upstream
     salary: {
         type: Sequelize.FLOAT,
         allowNull: true, // или false, в зависимости от вашего требования
     }
+=======
+>>>>>>> Stashed changes
 });
 
 module.exports = Profession;

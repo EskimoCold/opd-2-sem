@@ -13,10 +13,14 @@ const User = sequelize.define('User', {
         allowNull: false,
     },
     password: Sequelize.STRING,
+<<<<<<< Updated upstream
     isExpert: {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
     },
+=======
+    is_expert: Sequelize.BOOLEAN
+>>>>>>> Stashed changes
 });
 
 module.exports = User;

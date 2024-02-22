@@ -13,7 +13,7 @@ const Rating = sequelize.define('Rating', {
     expertId: {
         type: Sequelize.INTEGER,
         references: {
-            model: 'Experts',
+            model: 'Users',
             key: 'id',
         },
         allowNull: false,

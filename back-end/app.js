@@ -38,7 +38,7 @@ const start = async () => {
 
         await Quality.create({ name: 'Some Quality' });
         await Expert.create({ name: 'Some Expert' });
-        await Rating.create({ qualityId: 1, expertId: 1, points: 5 });
+        //await Rating.create({ qualityId: 1, expertId: 1, points: 5 });
 
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     } catch (error) {

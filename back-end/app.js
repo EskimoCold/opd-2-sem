@@ -10,13 +10,13 @@ const Quality = require('./db/models/Quality');
 const Expert = require('./db/models/Expert');
 const Rating = require('./db/models/Ratings');
 const ratingRoutes = require('./routes/ratingRoutes');
-
+const expertRoutes = require('./routes/expertRoutes');
 const app = express();
 
 app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api', protectedRoutes); // Use the protected routes
-
+app.use('/api/experts', expertRoutes);
 // Маршруты для рейтингов
 app.use('/ratings', ratingRoutes);
 
@@ -37,7 +37,7 @@ const start = async () => {
         await sequelize.sync();
 
         await Quality.create({ name: 'Some Quality' });
-        await Expert.create({ name: 'Some Expert' });
+       // await Expert.create({ name: 'Some Expert' });
         //await Rating.create({ qualityId: 1, expertId: 1, points: 5 });
 
         app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

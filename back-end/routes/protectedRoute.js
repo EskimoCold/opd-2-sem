@@ -3,7 +3,9 @@ const authorize = require('../middleware/authorize');
 const router = express.Router();
 const Profession = require('../db/models/Profession');
 const Quality = require('../db/models/Quality');
-
+const Rating = require('../db/models/Ratings');
+const sequelize = require('../db/index');
+const { Op } = require('sequelize')
 // An example protected route
 router.get('/protected', authorize, (req, res) => {
     res.send('This is a protected route. You are authenticated.');
@@ -40,7 +42,7 @@ router.post('/protected/profession/destroy',authorize, async (req, res) => {
         return res.status(500).json({ error })
     }
 });
-router.put("/protected/profession/update/:id", async (req, res) => {
+router.put("/protected/profession/update/:id",authorize, async (req, res) => {
     const  id =  req.params.id;
     const  data =  req.body;
     try {
@@ -61,9 +63,9 @@ router.put("/protected/profession/update/:id", async (req, res) => {
 
 
 // An example protected route
-router.get('/protected', authorize, (req, res) => {
-    res.send('This is a protected route. You are authenticated.');
-});
+//router.get('/protected', authorize, (req, res) => {
+//    res.send('This is a protected route. You are authenticated.');
+//});
 
 
 router.post('/protected/quality/create',authorize, async (req, res) => {
@@ -88,19 +90,19 @@ router.post('/protected/quality/destroy',authorize, async (req, res) => {
     const id=req.body.id;
     try{
         const num = await Quality.destroy({
-            where: { id }
+            where: {id:  id }
         });
         return res.send(`${num} number of records were deleted`);
     } catch (error) {
         res.status(500).send('Error delete quality.');
     }
 });
-router.put("/protected/quality/update/:id", async (req, res) => {
+router.put("/protected/quality/update/:id",authorize, async (req, res) => {
     const  id =  req.params.id;
     const  data =  req.body;
     try {
         const  quality= await  Quality.update(data, {
-            where: { id },
+            where: {id: id},
             returning: true,
         });
         res.status(200).send({
@@ -112,6 +114,56 @@ router.put("/protected/quality/update/:id", async (req, res) => {
         });
     }
 });
-module.exports = router;
+
+router.get("/protected/profession/getall", async (req, res) => {
+    try {
+        const pr = await sequelize.query('SELECT id,name,salary FROM "Professions"');
+        res.status(200).send(pr[0]);
+    }catch(err) {
+        res.status(500).send({
+            message: err.message
+        });
+    }
+});
+
+
+router.put("/protected/rating/:expertId/:professionId",authorize, async (req, res) => {
+    //console.log("here");
+    const  expertId =  req.params.expertId;
+    const  professionId =  req.params.professionId;
+    const  data =  req.body;
+    //console.log(data);
+    try {
+        const num = await Rating.destroy({
+            where:
+                {[ Op.and ]: [
+                        {expertId: expertId},
+                        {professionId: professionId}
+                    ]
+                }
+        });
+
+        for (var r in data) {
+            console.log(r);
+            await Rating.create({
+                qualityId: data[r].id,
+                expertId: expertId,
+                professionId: professionId,
+                points: data[r].point
+            });
+        }
+
+
+        res.status(200).send({
+            msg: "Rating created"
+        });
+    }catch(err) {
+        res.status(500).send({
+            message: err.message
+        });
+    }
+});
+
 
 module.exports = router;
+

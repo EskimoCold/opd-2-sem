@@ -1,6 +1,6 @@
 const Rating = require('../db/models/Ratings');
 const Quality = require('../db/models/Quality');
-const Expert = require('../db/models/Expert');
+const Expert = require('../db/models/User');
 const sequelize = require('../db/index');
 
 const {Op} = require("sequelize");
@@ -10,7 +10,7 @@ exports.getAgreedExperts = (req, res) => {
     Rating.findAll({
         where: { qualityId: qualityId, points: { [Op.gte]: 4 } },
         attributes: ['expertId'],
-        include: [{ model: Expert, attributes: ['name'] }],
+        include: [{ model: User, attributes: ['name'] }],
         raw: true
     })
         .then(agreedExperts => {
@@ -36,7 +36,7 @@ exports.getDisagreedExperts = async (req, res) => {
                     [Op.lt]: 3 // Например, если несогласные эксперты имеют оценку меньше 3
                 }
             },
-            include: [{ model: Expert, attributes: ['name'] }],
+            include: [{ model: User, attributes: ['name'] }],
             raw: true
         });
 

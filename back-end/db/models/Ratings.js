@@ -18,6 +18,14 @@ const Rating = sequelize.define('Rating', {
         },
         allowNull: false,
     },
+    professionId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'Professions',
+            key: 'id',
+        },
+        allowNull: false,
+    },
     points: {
         type: Sequelize.INTEGER,
         allowNull: false,

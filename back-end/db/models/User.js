@@ -10,13 +10,9 @@ const User = sequelize.define('User', {
     username: {
         type: Sequelize.STRING,
         unique: true,
-        allowNull: false,
     },
     password: Sequelize.STRING,
-    isExpert: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
-    },
+    is_expert: Sequelize.BOOLEAN
 });
 
 module.exports = User;

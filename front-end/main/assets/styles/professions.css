@@ -1,0 +1,23 @@
+.professions_description {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px; /* Space for header */
+}
+.professions_title {
+    align-self: self-start;
+}
+.professions_filters {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.professions_filter_competition {
+    border: 2px solid #666262;
+    border-radius: 15px;
+    width: 235px;
+    height: 61px;
+}

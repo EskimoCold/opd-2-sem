@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/styles/card.css">
+    <link rel="stylesheet" href="./assets/styles/header.css">
+    <link rel="stylesheet" href="./assets/styles/professions.css">
+    <link rel="stylesheet" href="./assets/styles/search.css">
+    <link rel="stylesheet" href="./assets/styles/sidebar.css">
+    <link rel="stylesheet" href="./assets/styles/style.css">
+</head>
+
+<body>
+    <!-- <div class="sidebar closed" id="sidebar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <div class="menu-item"><i class="fas fa-home"></i> Главная</div>
+        <div class="menu-item"><i class="fas fa-user"></i> Тесты</div>
+        <div class="menu-item"><i class="fas fa-envelope"></i> Эксперты</div>
+        <div class="menu-item"><i class="fas fa-cog"></i> Поддержка</div>
+        <div class="menu-item"><i class="fas fa-cog"></i> Качества</div>
+    </div> -->
+    <header class="header">
+        <div class="header_left">
+            <h2 class="header_title">Главная</h2>
+        </div>
+        <div class="header_right">
+            <a class="header_link">
+                <img class="header_avatar" src="./assets/images/avatar.png" alt="none"> 
+            </a> 
+            <a class="header_link">
+                <span id="header_link_user">Никнейм</span>
+            </a>
+            <div class="divider"></div>
+            <button class="header_exit">
+                <img class="header_avatar" src="./assets/images/exit.png" alt="none"> 
+            </button>
+
+        </div>
+        
+    </header>
+    <section class="professions">
+        <div class="professions_description">
+            <h3 class="professions_title">Профессии</h3>
+            <div class="search-container">
+                <input type="text" placeholder="Поиск...">
+                <button>Поиск</button>
+            </div>
+            <div class="professions_filters">
+                <div class="professions_filter_competition">
+                    <label for="competition">Конкуреция</label> 
+                    <select name="competition-names" id="competition-names"> 
+                        <option value="easy">Низкая</option> 
+                        <option value="medium">Средняя</option> 
+                        <option value="hard">Высокая</option> 
+                    </select>
+                </div>
+                <div>
+                    <label for="study">Сложность обучения</label> 
+                    <select name="study-level" id="study-level"> 
+                        <option value="easy">Легко</option> 
+                        <option value="medium">Средне</option> 
+                        <option value="hard">Сложно</option> 
+                    </select>
+                </div>
+                <div>
+                <label for="salary">Зарплата</label> 
+                <div class="salary_slider">
+                    <input type="range" min="0" max="400" value="100" oninput="rangeValue.innerText = this.value">
+                    <p id="rangeValue">100</p>   
+                </div>   
+            </div>
+            </div>
+        </div>
+            <!-- <div class="professions_cards">
+                <h2>Профессии</h2>
+                <div class="card">Python developer...</div>
+                <div class="card">Тестировщик...</div>
+                <div class="card">Сисадмин...</div>
+            </div> -->
+
+    </section>
+    
+
+</body>
+</html>

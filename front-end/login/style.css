@@ -1,0 +1,83 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: linear-gradient(39deg, #7a8893 0%, #85c9f9 100%);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: 600px;
+    background-color: #ffffff; /* bg-white */
+    padding: 1rem; /* p-8 */
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+    border-radius: 20px;
+}
+.logo-container {
+    margin-bottom: 1rem; /* mb-4 */
+    display: flex;
+    justify-content: center;
+}
+.form-group {
+    margin-bottom: 1rem; /* mb-4 */
+}
+.form-group:last-child {
+    margin-bottom: 1.5rem; /* mb-6 */
+}
+.form-group label {
+    display: block;
+    color: #4B5563; /* text-gray-700 */
+    margin-bottom: 0.5rem; /* mb-2 */
+    font-weight: 600; /* font-bold */
+}
+.form-group input {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    width: 350px;
+    height: 40px;
+    color: #4B5563; /* text-gray-700 */
+}
+.form-group input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.45); /* focus:shadow-outline */
+}
+.button-container {
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column; /* Stack the buttons vertically */
+    gap: 20px; /* Space between buttons */
+}
+.button {
+    align-self: center;
+    width: 350px;
+    height: 40px;
+    background: #7b53ea;; /* Button color */
+    color: white;
+    border: 2px solid #3a1e88;
+    padding: 10px 20px;
+    border-radius: 12px; /* Rounded corners */
+    text-align: center;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    transition: background-color 0.3s;
+}
+.button:hover {
+    background-color: #5B21B6; /* Darker shade on hover */
+}
+.footer-text {
+    text-align: center;
+    color: #6B7280; /* text-gray-500 */
+    font-size: 0.75rem; /* text-xs */
+}
+.footer-text a {
+    color: #3B82F6; /* text-blue-500 */
+    text-decoration: none;
+}

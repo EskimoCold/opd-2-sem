@@ -1,0 +1,38 @@
+.header {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 120px); /* Full width minus sidebar space */
+    top: 0px;
+    left: 60px;
+}
+.header_avatar {
+    width: 60px;
+    height: 60px;
+}
+.header_link_user {
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+    color: #3e3b3b;
+    margin-left: 10px;
+}
+.header_right {
+    display: flex;
+    align-items: center;
+}
+.divider {
+    height: 45px;
+    width: 0.5px;
+    background: grey;
+    margin-left: 10px;
+}
+.header_exit {
+    border-width: 0;
+    background-color: transparent;
+    
+}
